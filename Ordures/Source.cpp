@@ -65,6 +65,25 @@ float Puissance(float x, int n) {
 		}
 	}return cou;
 }
+int NOD(int A, int B) {
+	int k = 1;
+	while ((A != 0) && (B != 0)) {
+		while ((A % 2 == 0) && (B % 2 == 0)) {
+			A /= 2; B /= 2; k *= 2;
+		}
+		while (A % 2 == 0)A /= 2;
+		while (B % 2 == 0)B /= 2;
+		if (A >= B)A -= B; else B -= A;
+	}
+	return B * k;
+}
+int Evklid(int a, int b) {
+	while (a != b) {
+		if (a > b)a -= b;
+		else b -= a;
+	}
+	return a;
+}
 int main() {
 
 	setlocale(LC_ALL, "Ru");
@@ -92,13 +111,13 @@ int main() {
 	//while (y--) {
 	//	int r; std::cin >> r;
 
-	//	// хмрепонкъжхнммши онхяй
+	// хмрепонкъжхнммши онхяй
 
 	//	std::cout << Interpolation(mass, 10, r) << '\n';
 
 	//}
 
-	//// пеьерн ясмдюпюлю
+	// пеьерн ясмдюпюлю
 
 	//bool mass1[1000];
 	//int n = 30; //ПЮГЛЕП
@@ -107,9 +126,38 @@ int main() {
 
 	// бнгбедемхе б яреоемэ
 
-	float x; int n;
+	/*float x; int n;
 	std::cin >> x >> n;
-	std::cout << "\n " << x << "^" << n << ' ' << Puissance(x, n) << '\n';
+	std::cout << "\n " << x << "^" << n << ' ' << Puissance(x, n) << '\n';*/
+
+
+	//int a, b;
+	//std::cin >> a >> b;
+	// мнд ахмюпмши
+
+	/*
+	std::cout << "\n мнд ВХЯЕК " << a << " Х " << b << " ПЮБЕМ " << NOD(a, b) << '\n';*/
+
+	// мнд ебйкхдю
+
+	//std::cout << "\n мнд ВХЯЕК " << a << " Х " << b << " ПЮБЕМ " << Evklid(a, b) << '\n';
+
+	// пеьерн щпюрнятемю
+	std::cout << "\n оПНЯРШЕ ВХЯКЮ : \n";
+	const int n = 1000;
+	std::vector<bool>v(n, true);
+	for (int i = 2; i * i <= n; ++i) {
+		if (v[i] == true) {
+			for (int j = i * i; j < n; j += i) {
+				v[j] = false;
+			}
+		}
+	}
+	for (int i = 2; i < n; ++i) {
+		if (v[i] == true) {
+			std::cout << i << ' ';
+		}
+	}std::cout << '\n';
 
 	return 0;
 
